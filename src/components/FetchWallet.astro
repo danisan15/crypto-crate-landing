@@ -13,6 +13,7 @@
         // Get user's address
         const address = await (await signer).getAddress();
         // Send the address to the database
+        console.log(address);
       } catch (error) {
         console.error("Error connecting to MetaMask:", error);
       }
