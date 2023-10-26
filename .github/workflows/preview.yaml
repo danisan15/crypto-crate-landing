@@ -3,8 +3,8 @@ name: Vercel Preview Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-  PUBLIC_SUPABASE_KEY: ${{env.PUBLIC_SUPABASE_KEY}}
-  PUBLIC_SUPABASE_URL: ${{env.PUBLIC_SUPABASE_URL}}
+  PUBLIC_SUPABASE_KEY: ${{vars.PUBLIC_SUPABASE_KEY}}
+  PUBLIC_SUPABASE_URL: ${{vars.PUBLIC_SUPABASE_URL}}
 
 on:
   push:
@@ -25,8 +25,8 @@ jobs:
 
       - name: Set Vercel Environment Variables
         run: |
-          vercel env add PUBLIC_SUPABASE_URL ${{env.PUBLIC_SUPABASE_URL}} preview --token=${{secrets.VERCEL_TOKEN}}
-          vercel env add PUBLIC_SUPABASE_KEY ${{env.PUBLIC_SUPABASE_KEY}} preview --token=${{secrets.VERCEL_TOKEN}}
+          vercel env add PUBLIC_SUPABASE_URL ${{vars.PUBLIC_SUPABASE_URL}} preview --token=${{secrets.VERCEL_TOKEN}}
+          vercel env add PUBLIC_SUPABASE_KEY ${{vars.PUBLIC_SUPABASE_KEY}} preview --token=${{secrets.VERCEL_TOKEN}}
 
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
