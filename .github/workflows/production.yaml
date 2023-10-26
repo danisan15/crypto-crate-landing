@@ -25,8 +25,8 @@ jobs:
 
       - name: Set Vercel Environment Variables
         run: |
-          vercel env add PUBLIC_SUPABASE_URL ${{vars.PUBLIC_SUPABASE_URL}} production --token=${{secrets.VERCEL_TOKEN}}
-          vercel env add PUBLIC_SUPABASE_KEY ${{vars.PUBLIC_SUPABASE_KEY}} production --token=${{secrets.VERCEL_TOKEN}}
+          vercel env add PUBLIC_SUPABASE_URL production --token=${{secrets.VERCEL_TOKEN}}
+          vercel env add PUBLIC_SUPABASE_KEY production --token=${{secrets.VERCEL_TOKEN}}
 
       - name: Build Project Artifacts
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
